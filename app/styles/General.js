@@ -77,4 +77,29 @@ const loginStyles = StyleSheet.create({
     },
 })
 
-export { mainStyles, imageBackgroundStyle, loginStyles }
+//Estilos para RegistroScreen
+const registroStyles = StyleSheet.create({
+
+    checkBox: {
+        marginLeft: 0,
+        marginRight: 0,
+        borderWidth: 0,
+        backgroundColor: Colors.WHITE,
+    },
+
+    containerSocial: {
+        paddingTop: 30,
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+
+    buttonSocialIcon: {
+        marginBottom: 10,
+        width: 250,
+        height: 60,
+        alignItems: 'center',
+        borderRadius: 60,
+    },
+})
+
+export { mainStyles, imageBackgroundStyle, loginStyles, registroStyles }
