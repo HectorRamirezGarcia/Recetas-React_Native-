@@ -1,6 +1,7 @@
 package com.recetas;
 
 import com.facebook.react.ReactActivity;
+import com.swmansion.reanimated.ReanimatedPackage;
 
 public class MainActivity extends ReactActivity {
 

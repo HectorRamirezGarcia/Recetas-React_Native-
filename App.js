@@ -1,11 +1,12 @@
 import React from 'react';
+import 'react-native-gesture-handler'
 import AppNavigation from '@navigation/AppNavigation';
 import { UsuarioProvider } from '@context/UsuarioContext'
 
-function App(){
+function App() {
   return (
     <UsuarioProvider>
-      <AppNavigation/>
+      <AppNavigation />
     </UsuarioProvider>
   )
 }

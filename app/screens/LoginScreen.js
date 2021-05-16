@@ -6,18 +6,8 @@ import MyButton from '@components/MyButton'
 import Colors from '@styles/Colors'
 import { UsuarioContext } from '@context/UsuarioContext'
 import * as firebase from "firebase"
+import Snackbar from 'react-native-snackbar'
 
-var firebaseConfig = {
-    apiKey: "AIzaSyCi-CChycQQK46-acwNXkhHxVi6ZhFO2tk",
-    authDomain: "recetas-react-b6c7f.firebaseapp.com",
-    projectId: "recetas-react-b6c7f",
-    storageBucket: "recetas-react-b6c7f.appspot.com",
-    messagingSenderId: "806641563351",
-    appId: "1:806641563351:web:81dd1e60e64ff934b12292",
-    measurementId: "G-ZWE51Z5LTD"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
 
 export default function LoginScreen (props){
 
@@ -25,7 +15,7 @@ export default function LoginScreen (props){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [hidePassword, setHidePassword] = useState(false);
+    const [hidePassword, setHidePassword] = useState(true);
 
     return(
         <View style={[mainStyles.container]}>
@@ -57,15 +47,6 @@ export default function LoginScreen (props){
         </View>
     )
 
-    function iniciarSesion(){
-        loginAction({
-            type:'sign', data:{
-                email, password
-            }
-        })
-        goToScreen(props, 'Principal')
-    }
-
     function goToScreen(props, routename){
         props.navigation.navigate(routename)
     }
@@ -77,7 +58,17 @@ export default function LoginScreen (props){
             }
         })
         firebase.
-            auth().createUserWithEmailAndPassword(email, password)
-            goToScreen(props, 'Principal')
+            auth().signInWithEmailAndPassword(email, password).then((email) => {
+                Snackbar.show({
+                    text: 'Inicio de sesión exitoso',
+                    duration: Snackbar.LENGTH_LONG,
+                })
+    
+                goToScreen(props, 'Principal')
+              }).catch(error => 
+                Snackbar.show({
+                text: error.message,
+                duration: Snackbar.LENGTH_LONG,
+            }))
     }
 }

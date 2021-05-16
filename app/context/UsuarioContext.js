@@ -23,10 +23,6 @@ const usuarioReducer = (state = initialState, payload) => {
             saveUsuario(payload.data).then((msg) => {
                 console.log('usuario guardado')
             })
-            Snackbar.show({
-                text: 'Inicio de sesión exitoso',
-                duration: Snackbar.LENGTH_LONG,
-            })
 
             return { ...state, usuario: payload.data, activo: true }
         case 'sign-out':

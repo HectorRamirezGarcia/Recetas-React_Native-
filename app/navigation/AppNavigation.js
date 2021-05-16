@@ -5,7 +5,10 @@ import LoginScreen from '@screens/LoginScreen'
 import PrincipalScreen from '@screens/PrincipalScreen'
 import RecuperarPasswordScreen from '@screens/RecuperarPasswordScreen'
 import RegistroScreen from '@screens/RegistroScreen'
-import * as firebase from "firebase"
+import RecetasScreen from '@screens/RecetasScreen'
+import HomeScreen from '@screens/HomeScreen'
+import UserScreen from "@screens/UserScreen"
+import AddItem from "@screens/AddItem"
 
 const AppNavigation = createStackNavigator({
     Splash:{
@@ -34,6 +37,30 @@ const AppNavigation = createStackNavigator({
     },
     Registrar:{
         screen: RegistroScreen,
+        navigationOptions:{
+            headerShown: false,
+        }
+    },
+    RecetasScreen: {
+        screen: RecetasScreen,
+        navigationOptions:{
+            headerShown: false,
+        }
+    },
+    HomeScreen: {
+        screen: HomeScreen,
+        navigationOptions:{
+            headerShown: false,
+        }
+    },
+    UserScreen: {
+        screen: UserScreen,
+        navigationOptions:{
+            headerShown: false,
+        }
+    },
+    AddItem: {
+        screen: AddItem,
         navigationOptions:{
             headerShown: false,
         }
