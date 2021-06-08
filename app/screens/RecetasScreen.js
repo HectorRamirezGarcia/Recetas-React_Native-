@@ -4,7 +4,7 @@ import AddItem from '@screens/AddItem'
 import ListItem from '@screens/ListItem'
 import Colors from '@styles/Colors'
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-
+import * as firebase from 'firebase'
 
 
 const Tab = createBottomTabNavigator();

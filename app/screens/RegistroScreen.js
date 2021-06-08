@@ -14,12 +14,17 @@ import { UsuarioContext } from '@context/UsuarioContext'
 import { CheckBox, SocialIcon, Button } from 'react-native-elements'
 import * as firebase from 'firebase'
 import Snackbar from 'react-native-snackbar'
+import { db } from '@src/config';
 
-function goToScreen(props, routename){
+function goToScreen(props, routename) {
     props.navigation.navigate(routename)
 }
 
 export default function RegistroScreen(props) {
+
+    state = {
+        nameUser: '',
+    };
 
     const [login, loginAction] = useContext(UsuarioContext)
 
@@ -40,10 +45,10 @@ export default function RegistroScreen(props) {
                 <Text style={mainStyles.titleText}> Crea tu Cuenta</Text>
                 <MyTextInput placeholder='Nombres' image='user' />
                 <MyTextInput placeholder='Apellidos' image='user' />
-                <MyTextInput keyboardType='email-address' placeholder='E-mail' image='user' 
-                value={email} onChangeText={(email)=> setEmail(email)} image='envelope' />
-                <MyTextInput keyboardType={null} placeholder='Contraseña' image='lock' bolGone={true} 
-                secureTextEntry={hidePassword} onPress={() => setHidePassword(!hidePassword)} value={password} onChangeText={(password)=> setPassword(password)}
+                <MyTextInput keyboardType='email-address' placeholder='E-mail' image='user'
+                    value={email} onChangeText={(email) => setEmail(email)} image='envelope' />
+                <MyTextInput keyboardType={null} placeholder='Contraseña' image='lock' bolGone={true}
+                    secureTextEntry={hidePassword} onPress={() => setHidePassword(!hidePassword)} value={password} onChangeText={(password) => setPassword(password)}
                 />
                 <CheckBox
                     containerStyle={registroStyles.checkBox}
@@ -66,9 +71,9 @@ export default function RegistroScreen(props) {
         </ScrollView>
     )
 
-    function registro(){
+    function registro() {
         loginAction({
-            type:'sign', data:{
+            type: 'sign', data: {
                 email, password
             }
         })
@@ -79,11 +84,11 @@ export default function RegistroScreen(props) {
             })
 
             goToScreen(props, 'Principal')
-          }).catch(error => 
+        }).catch(error =>
             Snackbar.show({
-            text: error.message,
-            duration: Snackbar.LENGTH_LONG,
-        }))
+                text: error.message,
+                duration: Snackbar.LENGTH_LONG,
+            }))
 
     }
 }

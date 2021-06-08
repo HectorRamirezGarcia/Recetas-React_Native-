@@ -10,6 +10,8 @@ target 'recetas' do
 
   pod 'react-native-restart', :path => '../node_modules/react-native-restart'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'recetasTests' do
     inherit! :complete
     # Pods for testing
